@@ -1,36 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Accueil - Locations</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Lien vers ton futur CSS -->
 </head>
 <body>
-    <% for (let i = 0; i < 10; i++) { %>
-        <p>Hello, world!</p>
-    <% } %>
     <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Locations de vacances</h1>
     </header>
 
     <main>
-        <h1>Welcome to Our Website</h1>
-        <section class="content">
-            <p>This is the main content area of our website.</p>
-        </section>
+        <!-- Conteneur pour la liste des logements -->
+        <div class="logement-list">
+            <!-- Boucle EJS pour afficher chaque logement -->
+            <% logements.forEach(logement => { %>
+                <div class="logement-card">
+                    <img src="/images/<%= logement.photos[0] %>" alt="<%= logement.name %>">
+                    <h3><%= logement.name %></h3>
+                    <p><%= logement.prix %>€/nuit</p>
+                    <a href="/logement/<%= logement.id %>">Voir détail</a>
+                </div>
+            <% }) %>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; JINQ BAPT.</p>
+        <p>&copy; 2025 JinQ & Bapt!ste</p>
     </footer>
-
-    <script src="/js/main.js"></script>
 </body>
 </html>
