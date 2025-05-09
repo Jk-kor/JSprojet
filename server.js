@@ -10,7 +10,7 @@ const logements = [
     name: "Logement 1", 
     photos: ["photo1.jpg", "photo2.jpg"],  
     prix: 100,  
-    description: "Description...",  
+    description: "baptiste ...",  
     note: 4.5,  
     // // Bonus possible :
     // location: { city: "Paris", latitude: 48.8566, longitude: 2.3522 }  // Pour la carte Leaflet
