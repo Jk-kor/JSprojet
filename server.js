@@ -11,7 +11,14 @@ const logements = [
     photos: ["photo1.jpg", "photo2.jpg"],  
     prix: 100,  
     description: "baptiste ...",  
+    type: "Appartement",
+    chambres: 2,
+    salle_de_bain: 1,
+    cuisine: 1,
+    salon: 1,
+    surface: 50,
     note: 4.5,  
+    capacite: 4,
     // // Bonus possible :
     // location: { city: "Paris", latitude: 48.8566, longitude: 2.3522 }  // Pour la carte Leaflet
   },

@@ -24,12 +24,8 @@
     <main>
         <div class="container">
             <div class="logement-detail">
-                <div class="image-gallery">
-                    <img src="/images/<%= logement.photos[0] %>" alt="<%= logement.name %>" class="main-image">
-                </div>
-                
-                <div class="logement-info">
-                    <h1><%= logement.name %></h1>
+                <div class="logement-header">
+                    <h1 class="logement-title"><%= logement.name %></h1>
                     <div class="rating">
                         <% for(let i = 0; i < Math.floor(logement.note); i++) { %>
                             <i class="fas fa-star"></i>
@@ -39,30 +35,185 @@
                         <% } %>
                         <span><%= logement.note %>/5</span>
                     </div>
-                    
-                    <div class="price-tag">
-                        <span class="price"><%= logement.prix %>€</span> / nuit
+                </div>
+
+                <div class="image-gallery">
+                    <div class="gallery-container">
+                        <button class="gallery-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <div class="gallery-images">
+                            <% if(logement.photos && logement.photos.length > 0) { %>
+                                <% logement.photos.forEach((photo, index) => { %>
+                                    <img src="/images/<%= photo %>" alt="<%= logement.name %> - Photo <%= index + 1 %>" class="gallery-image <%= index === 0 ? 'active' : '' %>">
+                                <% }); %>
+                            <% } else { %>
+                                <img src="/images/default.jpg" alt="<%= logement.name %>" class="gallery-image active">
+                            <% } %>
+                        </div>
+                        <button class="gallery-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="gallery-dots">
+                        <% if(logement.photos && logement.photos.length > 0) { %>
+                            <% logement.photos.forEach((photo, index) => { %>
+                                <span class="dot <%= index === 0 ? 'active' : '' %>" data-index="<%= index %>"></span>
+                            <% }); %>
+                        <% } else { %>
+                            <span class="dot active" data-index="0"></span>
+                        <% } %>
+                    </div>
+                    <div class="gallery-counter">
+                        <span class="current-index">1</span> / <span class="total-images"><%= logement.photos ? logement.photos.length : 1 %></span>
+                    </div>
+                </div>
+                
+                <div class="content-wrapper">
+                    <div class="logement-info">
+                        <section class="info-section">
+                            <h2 class="section-title">Présentation</h2>
+                            <p class="description-text"><%= logement.description %></p>
+                        </section>
+                        
+                        <section class="info-section">
+                            <h2 class="section-title">Informations sur l'espace</h2>
+                            <div class="basic-info">
+                                <div class="info-row">
+                                    <div class="info-item">
+                                        <i class="fas fa-bed"></i>
+                                        
+                                        <span><%= logement.chambres %> chambres</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-bath"></i>
+                                        <span><%= logement.salle_de_bain %> salle de bain</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-utensils"></i>
+                                        <span><%= logement.cuisine %> cuisine</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-couch"></i>
+                                        <span><%= logement.salon %> salon</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-row details">
+                                    <div class="detail-row">
+                                        <div class="detail-label">Surface</div>
+                                        <div class="detail-value"><%= logement.surface %>m²</div>
+                                    </div>
+                                    <div class="detail-row">
+                                        <div class="detail-label">Type de logement</div>
+                                        <div class="detail-value">Appartement</div>
+                                    </div>
+                                    <div class="detail-row">
+                                        <div class="detail-label">Capacité</div>
+                                        <div class="detail-value"><%= logement.capacite %> personnes</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="info-section">
+                            <h2 class="section-title">Équipements</h2>
+                            <div class="options-grid">
+                                <div class="option-item">
+                                    <i class="fas fa-wifi"></i>
+                                    <span>Wi-Fi</span>
+                                </div>
+                                <div class="option-item">
+                                    <i class="fas fa-tv"></i>
+                                    <span>Télévision</span>
+                                </div>
+                                <div class="option-item">
+                                    <i class="fas fa-snowflake"></i>
+                                    <span>Climatisation</span>
+                                </div>
+                                <div class="option-item">
+                                    <i class="fas fa-bed"></i>
+                                    <span>Lit</span>
+                                </div>
+                                <div class="option-item">
+                                    <i class="fas fa-tshirt"></i>
+                                    <span>Lave-linge</span>
+                                </div>
+                                <div class="option-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Ustensiles de cuisine</span>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                     
-                    <div class="description">
-                        <h2>Description du logement</h2>
-                        <p><%= logement.description %></p>
-                    </div>
-                    
-                    <div class="details">
-                        <div class="detail-item">
-                            <i class="fas fa-users"></i>
-                            <span>Capacité: <%= logement.capacite || '2' %> personnes</span>
+                    <div class="booking-sidebar">
+                        <div class="price-card">
+                            <div class="price-header">
+                                <span class="price"><%= logement.prix %>€</span> /nuit
+                            </div>
+                            
+                            <div class="booking-form">
+                                <div class="date-picker">
+                                    <div class="date-input">
+                                        <label>Arrivée</label>
+                                        <input type="date" class="date-control">
+                                    </div>
+                                    <div class="date-input">
+                                        <label>Départ</label>
+                                        <input type="date" class="date-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="guest-select">
+                                    <label>Voyageurs</label>
+                                    <select class="guest-control">
+                                        <% for(let i = 1; i <= (logement.capacite || 2); i++) { %>
+                                            <option value="<%= i %>"><%= i %> personne<%= i > 1 ? 's' : '' %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                
+                                <div class="price-breakdown">
+                                    <div class="price-row">
+                                        <span><%= logement.prix %>€ x 1 nuit</span>
+                                        <span><%= logement.prix %>€</span>
+                                    </div>
+                                    <div class="price-row">
+                                        <span>Frais de ménage</span>
+                                        <span>20€</span>
+                                    </div>
+                                    <div class="price-row total">
+                                        <span>Total</span>
+                                        <span><%= logement.prix + 20 %>€</span>
+                                    </div>
+                                </div>
+                                
+                                <button class="book-btn">Réserver</button>
+                            </div>
+                            
+                            <div class="discount-info">
+                                <div class="discount-item">
+                                    <div class="discount-title">Réduction pour long séjour</div>
+                                    <div class="discount-value">7% de réduction pour les séjours de plus de 2 semaines</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="host-card">
+                            <div class="host-info">
+                                <div class="host-avatar">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="host-details">
+                                    <div class="host-name">Hôte</div>
+                                    <div class="host-verified"><i class="fas fa-check-circle"></i> Identité vérifiée</div>
+                                </div>
+                            </div>
+                            <p class="host-message">Bienvenue ! Je ferai de mon mieux pour rendre votre séjour agréable.</p>
+                            <button class="contact-host-btn"><i class="fas fa-comment"></i> Contacter l'hôte</button>
                         </div>
                     </div>
-                    
-                    <div class="booking-section">
-                        <button class="book-btn">Réserver maintenant</button>
-                    </div>
-                    
-                    <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
                 </div>
             </div>
+            
+            <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
         </div>
     </main>
 
@@ -76,5 +227,175 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Code lié à la galerie d'images
+            const images = document.querySelectorAll('.gallery-image');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const currentIndexEl = document.querySelector('.current-index');
+            let currentIndex = 0;
+            
+            // Fonction d'affichage d'image
+            function showImage(index) {
+                // ... existing code ...
+            }
+            
+            // Événement de clic sur le bouton précédent
+            prevBtn.addEventListener('click', function() {
+                showImage(currentIndex - 1);
+            });
+            
+            // Événement de clic sur le bouton suivant
+            nextBtn.addEventListener('click', function() {
+                showImage(currentIndex + 1);
+            });
+            
+            // Événement de clic sur les points
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    showImage(index);
+                });
+            });
+
+            // Fonctionnalité de sélection de dates et de calcul de prix
+            const arrivalInput = document.querySelector('.date-input:first-child .date-control');
+            const departureInput = document.querySelector('.date-input:last-child .date-control');
+            const pricePerNight = parseInt('<%= logement.prix %>');
+            const cleaningFee = 20;
+            
+            // Création de l'élément de message d'erreur
+            const errorContainer = document.createElement('div');
+            errorContainer.className = 'date-error';
+            errorContainer.style.color = '#FF5A5F';
+            errorContainer.style.fontSize = '0.8rem';
+            errorContainer.style.marginTop = '5px';
+            errorContainer.style.display = 'none';
+            document.querySelector('.date-picker').after(errorContainer);
+            
+            // Fonction de mise à jour du calcul de prix lors du changement de date
+            function updatePriceCalculation() {
+                const arrivalDate = new Date(arrivalInput.value);
+                const departureDate = new Date(departureInput.value);
+                const priceRows = document.querySelectorAll('.price-row');
+                
+                // Réinitialisation du message d'erreur
+                errorContainer.style.display = 'none';
+                
+                // Vérification de la validité des deux dates
+                if (isNaN(arrivalDate.getTime()) || isNaN(departureDate.getTime())) {
+                    // Réinitialisation aux valeurs par défaut si les dates ne sont pas valides
+                    priceRows[0].innerHTML = `<span>${pricePerNight}€ x 1 nuit</span><span>${pricePerNight}€</span>`;
+                    priceRows[1].innerHTML = `<span>Frais de ménage</span><span>20€</span>`;
+                    priceRows[2].innerHTML = `<span>Total</span><span>${pricePerNight + cleaningFee}€</span>`;
+                    return;
+                }
+                
+                // Calcul du nombre de nuits (millisecondes -> jours)
+                const timeDiff = departureDate.getTime() - arrivalDate.getTime();
+                const nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                
+                // Vérification de la validité du nombre de nuits
+                if (nights <= 0) {
+                    // Affichage du message d'erreur si les dates sont dans le mauvais ordre ou identiques
+                    errorContainer.textContent = 'La date de départ doit être postérieure à la date d\'arrivée.';
+                    errorContainer.style.display = 'block';
+                    
+                    // Réinitialisation aux valeurs par défaut
+                    priceRows[0].innerHTML = `<span>${pricePerNight}€ x 1 nuit</span><span>${pricePerNight}€</span>`;
+                    priceRows[1].innerHTML = `<span>Frais de ménage</span><span>20€</span>`;
+                    priceRows[2].innerHTML = `<span>Total</span><span>${pricePerNight + cleaningFee}€</span>`;
+                    return;
+                }
+                
+                // Calcul du prix
+                const accommodationCost = pricePerNight * nights;
+                const totalCost = accommodationCost + cleaningFee;
+                
+                // Mise à jour du DOM - mise à jour de la ligne de coût d'hébergement
+                priceRows[0].innerHTML = `<span>${pricePerNight}€ x ${nights} nuit${nights > 1 ? 's' : ''}</span><span>${accommodationCost}€</span>`;
+                priceRows[1].innerHTML = `<span>Frais de ménage</span><span>20€</span>`;
+                
+                // Vérification de l'application de la réduction et mise à jour du total
+                if (nights > 14) {
+                    const discount = totalCost * 0.07; // Réduction de 7%
+                    const discountedTotal = totalCost - discount;
+                    
+                    // Affichage des informations de réduction (en rouge)
+                    const discountRow = document.createElement('div');
+                    discountRow.className = 'price-row discount';
+                    discountRow.innerHTML = `<span>Réduction (7%)</span><span style="color: #FF5A5F; font-weight: bold;">-${discount.toFixed(2)}€</span>`;
+                    
+                    // Suppression de la ligne de réduction existante si elle existe
+                    const existingDiscountRow = document.querySelector('.price-row.discount');
+                    if (existingDiscountRow) {
+                        existingDiscountRow.remove();
+                    }
+                    
+                    // Ajout de la ligne de réduction après la ligne des frais de ménage
+                    priceRows[1].after(discountRow);
+                    
+                    // Mise à jour du total
+                    priceRows[2].innerHTML = `<span>Total</span><span>${discountedTotal.toFixed(2)}€</span>`;
+                } else {
+                    // Suppression de la ligne de réduction s'il n'y a pas de réduction
+                    const existingDiscountRow = document.querySelector('.price-row.discount');
+                    if (existingDiscountRow) {
+                        existingDiscountRow.remove();
+                    }
+                    
+                    // Mise à jour du total
+                    priceRows[2].innerHTML = `<span>Total</span><span>${totalCost}€</span>`;
+                }
+            }
+            
+            // Ajout d'écouteurs d'événements pour les entrées de date
+            arrivalInput.addEventListener('change', function() {
+                // Définition de la valeur minimale de la date de départ lorsque la date d'arrivée change
+                const arrivalDate = new Date(arrivalInput.value);
+                if (!isNaN(arrivalDate.getTime())) {
+                    // Définition de la date minimale de départ au lendemain de la date d'arrivée
+                    const minDepartureDate = new Date(arrivalDate);
+                    minDepartureDate.setDate(minDepartureDate.getDate() + 1);
+                    departureInput.min = formatDate(minDepartureDate);
+                    
+                    // Ajustement automatique de la date de départ si elle est antérieure à la date d'arrivée
+                    const departureDate = new Date(departureInput.value);
+                    if (!isNaN(departureDate.getTime()) && departureDate <= arrivalDate) {
+                        departureInput.value = formatDate(minDepartureDate);
+                    }
+                }
+                updatePriceCalculation();
+            });
+            
+            departureInput.addEventListener('change', updatePriceCalculation);
+            
+            // Définition de la date d'aujourd'hui comme valeur par défaut
+            const today = new Date();
+            const tomorrow = new Date();
+            tomorrow.setDate(today.getDate() + 1);
+            
+            // Fonction de conversion de format de date (YYYY-MM-DD)
+            function formatDate(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+            
+            // Configuration des dates par défaut et des limites de dates
+            arrivalInput.min = formatDate(today);
+            arrivalInput.value = formatDate(today);
+            
+            departureInput.min = formatDate(tomorrow);
+            departureInput.value = formatDate(tomorrow);
+            
+            // Exécution du calcul de prix initial
+            updatePriceCalculation();
+        });
+    </script>
 </body>
 </html>
