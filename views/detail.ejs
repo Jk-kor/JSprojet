@@ -6,6 +6,12 @@
     <title><%= logement.name %> - Détails</title>
      <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/detail_style.css">
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""
+  />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -211,6 +217,8 @@
 <%- include('partials/footer') %>
 
     <script>
+        src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         document.addEventListener('DOMContentLoaded', function() {
             // Code lié à la galerie d'images
             const images = document.querySelectorAll('.gallery-image');
