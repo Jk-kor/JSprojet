@@ -109,6 +109,8 @@
                             </div>
                         </section>
                         
+                
+                        
                         <section class="info-section">
                             <h2 class="section-title">Équipements</h2>
                             <div class="options-grid">
@@ -137,6 +139,10 @@
                                     <span>Ustensiles de cuisine</span>
                                 </div>
                             </div>
+                        </section>
+                        <section class="info-section">
+                            <h2 class="section-title">Localisation</h2>
+                            <div id="mapid" style="height: 300px; width: 700px; margin-top: 15px; border: #968c8c solid 2px;"></div>
                         </section>
                     </div>
                     
@@ -216,9 +222,22 @@
 
 <%- include('partials/footer') %>
 
+    <!-- Leaflet JS -->
+     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+     <script type="text/javascript">
+        // Use a conditional (ternary) operator directly, not typeof as a variable name
+        var latitude = <%= logement.location && logement.location.latitude !== undefined ? JSON.stringify(logement.location.latitude) : '51.505' %>;
+        var longitude = <%= logement.location && logement.location.longitude !== undefined ? JSON.stringify(logement.location.longitude) : '-0.06' %>;
+        var map = L.map('mapid').setView([latitude, longitude], 15);
+        L.marker([latitude, longitude]).addTo(map)
+      .bindPopup("ICI")
+      .openPopup();
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+</script>
+  
     <script>
-        src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         document.addEventListener('DOMContentLoaded', function() {
             // Code lié à la galerie d'images
             const images = document.querySelectorAll('.gallery-image');
@@ -279,6 +298,8 @@
             const departureInput = document.querySelector('.date-input:last-child .date-control');
             const pricePerNight = parseInt('<%= logement.prix %>');
             const cleaningFee = 20;
+            const mapElement = document.getElementById('mapid');
+            
             
             // Création de l'élément de message d'erreur
             const errorContainer = document.createElement('div');
@@ -409,6 +430,10 @@
             // Exécution du calcul de prix initial
             updatePriceCalculation();
         });
+
+        
     </script>
+  
 </body>
 </html>
+

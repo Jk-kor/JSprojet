@@ -13,7 +13,7 @@
     "surface": 50,
     "note": 4.5,  
     "capacite": 4,
-    "location": { "city": "Paris", "latitude": 48.8566, "longitude": 2.3522 }
+    "location": { "city": "Paris", "latitude": 48.8566, "longitude": 2.3522 ,"altitude": 13}
   },
   {
     "id": 2,

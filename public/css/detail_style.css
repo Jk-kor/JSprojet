@@ -570,4 +570,9 @@ footer {
     .image-gallery {
         height: 300px;
     }
+    #mapid {
+       
+        border: #be1f1f solid 10px;
+        border-radius: 5px;
+    }
 }
