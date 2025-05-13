@@ -228,7 +228,8 @@
         // Use a conditional (ternary) operator directly, not typeof as a variable name
         var latitude = <%= logement.location && logement.location.latitude !== undefined ? JSON.stringify(logement.location.latitude) : '51.505' %>;
         var longitude = <%= logement.location && logement.location.longitude !== undefined ? JSON.stringify(logement.location.longitude) : '-0.06' %>;
-        var map = L.map('mapid').setView([latitude, longitude], 15);
+        var map = L.map('mapid').setView([latitude, longitude], 15s
+    );
         L.marker([latitude, longitude]).addTo(map)
       .bindPopup("ICI")
       .openPopup();
