@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - Locations</title>
-    <link rel="stylesheet" href="/css/style.css"> <!-- Lien vers ton futur CSS -->
+     <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Locations de vacances</h1>
-    </header>
+<%- include('partials/header') %>
 
     <main>
         <!-- Conteneur pour la liste des logements -->
@@ -26,8 +25,6 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 JinQ & Bapt!ste</p>
-    </footer>
+<%- include('partials/footer') %>
 </body>
 </html>
