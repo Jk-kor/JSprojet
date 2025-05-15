@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une annonce</title>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/add-listing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main class="container">
+        <h1>Ajouter une nouvelle annonce</h1>
+        <form id="listing-form" enctype="multipart/form-data">
+            <!-- Section Informations de base -->
+            <section class="form-section">
+                <h2><i class="fas fa-info-circle"></i> Informations de base</h2>
+                <div class="form-group">
+                    <label for="name">Titre de l'annonce*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="type">Type de logement*</label>
+                        <select id="type" name="type" required>
+                            <option value="">-- Sélectionnez --</option>
+                            <option value="Appartement">Appartement</option>
+                            <option value="Maison">Maison</option>
+                            <option value="Studio">Studio</option>
+                            <option value="Chalet">Chalet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prix">Prix par nuit (€)*</label>
+                        <input type="number" id="prix" name="prix" min="1" required>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Détails -->
+            <section class="form-section">
+                <h2><i class="fas fa-home"></i> Détails du logement</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="surface">Surface (m²)</label>
+                        <input type="number" id="surface" name="surface" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="capacite">Capacité (personnes)*</label>
+                        <input type="number" id="capacite" name="capacite" min="1" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="chambres">Chambres</label>
+                        <input type="number" id="chambres" name="chambres" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="salle_de_bain">Salles de bain</label>
+                        <input type="number" id="salle_de_bain" name="salle_de_bain" min="0">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Description -->
+            <section class="form-section">
+                <h2><i class="fas fa-align-left"></i> Description</h2>
+                <div class="form-group">
+                    <label for="description">Description détaillée*</label>
+                    <textarea id="description" name="description" rows="5" required></textarea>
+                </div>
+            </section>
+
+            <!-- Section Photos -->
+            <section class="form-section">
+                <h2><i class="fas fa-camera"></i> Photos</h2>
+                <div class="form-group">
+                    <label for="photos">Télécharger des images*</label>
+                    <input type="file" id="photos" name="photos" multiple accept="image/*" required>
+                    <div id="preview-container" class="preview-container"></div>
+                </div>
+            </section>
+
+            <button type="submit" class="submit-btn">Publier l'annonce</button>
+        </form>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="/js/add-listing.js"></script>
+</body>
+</html>

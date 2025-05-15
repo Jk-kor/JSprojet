@@ -12,7 +12,8 @@
   "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "multer": "^1.4.5-lts.2"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,5 @@
   "bugs": {
     "url": "https://github.com/Jk-kor/JSprojet/issues"
   },
-  "homepage": "https://github.com/Jk-kor/JSprojet#readme",
-  "devDependencies": {}
+  "homepage": "https://github.com/Jk-kor/JSprojet#readme"
 }
