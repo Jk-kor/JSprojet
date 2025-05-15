@@ -1,24 +1,35 @@
 [
   {
-    "id": 1,  
-    "name": "Logement 1", 
-    "photos": ["photo1.jpg", "photo2.jpg"],  
-    "prix": 100,  
-    "description": "baptiste ...",  
+    "id": 1,
+    "name": "Logement 1",
+    "photos": [
+      "photo1.jpg",
+      "photo2.jpg"
+    ],
+    "prix": 100,
+    "description": "baptiste ...",
     "type": "Appartement",
     "chambres": 2,
     "salle_de_bain": 1,
     "cuisine": 1,
     "salon": 1,
     "surface": 50,
-    "note": 4.5,  
+    "note": 4.5,
     "capacite": 4,
-    "location": { "city": "Paris", "latitude": 48.8566, "longitude": 2.3522 ,"altitude": 13}
+    "location": {
+      "city": "Paris",
+      "latitude": 48.8566,
+      "longitude": 2.3522,
+      "altitude": 13
+    }
   },
   {
     "id": 2,
     "name": "Appartement moderne",
-    "photos": ["appartement.jpg", "appartement-cuisine.jpg"],
+    "photos": [
+      "appartement.jpg",
+      "appartement-cuisine.jpg"
+    ],
     "prix": 200,
     "description": "Appartement lumineux avec vue sur la ville.",
     "note": 4.3
@@ -26,7 +37,10 @@
   {
     "id": 3,
     "name": "Cabane en forêt",
-    "photos": ["cabane.jpg", "cabane-interieur.jpg"],
+    "photos": [
+      "cabane.jpg",
+      "cabane-interieur.jpg"
+    ],
     "prix": 120,
     "description": "Une cabane cosy au cœur de la forêt, parfaite pour se déconnecter.",
     "note": 4.8
@@ -34,7 +48,10 @@
   {
     "id": 4,
     "name": "Appartement de con",
-    "photos": ["appartement.jpg", "appartement-cuisine.jpg"],
+    "photos": [
+      "appartement.jpg",
+      "appartement-cuisine.jpg"
+    ],
     "prix": 200,
     "description": "Appartement lumineux avec vue sur la ville.",
     "note": 4.3
@@ -42,31 +59,46 @@
   {
     "id": 5,
     "name": "Appartement de bébé",
-    "photos": ["appartement.jpg", "appartement-cuisine.jpg"],
+    "photos": [
+      "appartement.jpg",
+      "appartement-cuisine.jpg"
+    ],
     "prix": 200,
     "description": "Appartement lumineux avec vue sur la ville.",
     "note": 4.3
   },
-        {
-    "id": 6,  
-    "name": "Appartement moderne - Centre-ville", 
-    "photos": ["appart1.jpg", "appart1-2.jpg", "appart1-3.jpg"],  
-    "prix": 120,  
-    "description": "Appartement lumineux en plein cœur de la ville avec vue sur les toits. Parfait pour les voyageurs en quête d'authenticité.",  
+  {
+    "id": 6,
+    "name": "Appartement moderne - Centre-ville",
+    "photos": [
+      "appart1.jpg",
+      "appart1-2.jpg",
+      "appart1-3.jpg"
+    ],
+    "prix": 120,
+    "description": "Appartement lumineux en plein cœur de la ville avec vue sur les toits. Parfait pour les voyageurs en quête d'authenticité.",
     "type": "Appartement",
     "chambres": 2,
     "salle_de_bain": 1,
     "cuisine": 1,
     "salon": 1,
     "surface": 65,
-    "note": 4.7,  
+    "note": 4.7,
     "capacite": 4,
-    "location": { "city": "Paris", "latitude": 48.8566, "longitude": 2.3522 }
+    "location": {
+      "city": "Paris",
+      "latitude": 48.8566,
+      "longitude": 2.3522
+    }
   },
-   {
+  {
     "id": 7,
     "name": "Chalet montagnard - Vue panoramique",
-    "photos": ["chalet1.jpg", "chalet2.jpg", "chalet3.jpg"],
+    "photos": [
+      "chalet1.jpg",
+      "chalet2.jpg",
+      "chalet3.jpg"
+    ],
     "prix": 180,
     "description": "Authentique chalet en bois avec cheminée et accès direct aux pistes. Terrasse avec vue imprenable sur les montagnes.",
     "type": "Chalet",
@@ -77,12 +109,19 @@
     "surface": 90,
     "note": 4.9,
     "capacite": 6,
-    "location": { "city": "Chamonix", "latitude": 45.9237, "longitude": 6.8694 }
+    "location": {
+      "city": "Chamonix",
+      "latitude": 45.9237,
+      "longitude": 6.8694
+    }
   },
   {
     "id": 8,
     "name": "Studio cosy - Quartier branché",
-    "photos": ["studio1.jpg", "studio2.jpg"],
+    "photos": [
+      "studio1.jpg",
+      "studio2.jpg"
+    ],
     "prix": 75,
     "description": "Studio entièrement rénové avec décoration design. Idéal pour les séjours courts en ville. Proche de tous commerces.",
     "type": "Studio",
@@ -93,12 +132,21 @@
     "surface": 30,
     "note": 4.3,
     "capacite": 2,
-    "location": { "city": "Lyon", "latitude": 45.7640, "longitude": 4.8357 }
+    "location": {
+      "city": "Lyon",
+      "latitude": 45.764,
+      "longitude": 4.8357
+    }
   },
-    {
+  {
     "id": 9,
     "name": "Maison de campagne - Piscine privée",
-    "photos": ["maison1.jpg", "maison2.jpg", "maison3.jpg", "maison4.jpg"],
+    "photos": [
+      "maison1.jpg",
+      "maison2.jpg",
+      "maison3.jpg",
+      "maison4.jpg"
+    ],
     "prix": 220,
     "description": "Ancienne ferme rénovée avec charme, grand jardin arboré et piscine chauffée. Calme garantie.",
     "type": "Maison",
@@ -109,12 +157,19 @@
     "surface": 150,
     "note": 4.8,
     "capacite": 8,
-    "location": { "city": "Provence", "latitude": 43.9352, "longitude": 6.0679 }
+    "location": {
+      "city": "Provence",
+      "latitude": 43.9352,
+      "longitude": 6.0679
+    }
   },
   {
     "id": 10,
     "name": "Loft industriel - Quartier artistique",
-    "photos": ["loft1.jpg", "loft2.jpg"],
+    "photos": [
+      "loft1.jpg",
+      "loft2.jpg"
+    ],
     "prix": 160,
     "description": "Ancien atelier transformé en loft avec hauts plafonds et grandes baies vitrées. Décoration unique d'artiste local.",
     "type": "Loft",
@@ -125,12 +180,20 @@
     "surface": 70,
     "note": 4.6,
     "capacite": 3,
-    "location": { "city": "Bordeaux", "latitude": 44.8378, "longitude": -0.5792 }
+    "location": {
+      "city": "Bordeaux",
+      "latitude": 44.8378,
+      "longitude": -0.5792
+    }
   },
   {
     "id": 11,
     "name": "Villa contemporaine - Bord de mer",
-    "photos": ["villa1.jpg", "villa2.jpg", "villa3.jpg"],
+    "photos": [
+      "villa1.jpg",
+      "villa2.jpg",
+      "villa3.jpg"
+    ],
     "prix": 350,
     "description": "Architecture moderne avec piscine à débordement et accès privé à la plage. Parfait pour des vacances luxueuses.",
     "type": "Villa",
@@ -141,6 +204,10 @@
     "surface": 200,
     "note": 4.9,
     "capacite": 10,
-    "location": { "city": "Saint-Tropez", "latitude": 43.2692, "longitude": 6.6397 }
+    "location": {
+      "city": "Saint-Tropez",
+      "latitude": 43.2692,
+      "longitude": 6.6397
+    }
   }
 ]

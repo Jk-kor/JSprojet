@@ -575,4 +575,84 @@ footer {
         border: #be1f1f solid 10px;
         border-radius: 5px;
     }
+    /* Styles pour les boutons d'action */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.edit-btn, .delete-btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.edit-btn {
+    background-color: #FF5A5F;
+    color: white;
+    border: none;
+}
+
+.edit-btn:hover {
+    background-color: #e04a50;
+}
+
+.delete-form {
+    margin: 0;
+}
+
+.delete-btn {
+    background-color: #f8f8f8;
+    color: #ff5a5f;
+    border: 1px solid #ff5a5f;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #fff0f0;
+}
+
+/* Styles pour le formulaire d'édition */
+.current-photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.current-photos .photo-container {
+    position: relative;
+}
+
+.current-photos img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.cancel-btn {
+    padding: 12px 25px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.cancel-btn:hover {
+    background-color: #f5f5f5;
+}
 }

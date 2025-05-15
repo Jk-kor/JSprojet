@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier l'annonce</title>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/add-listing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main class="container">
+        <h1>Modifier l'annonce</h1>
+        <form id="edit-form" action="/edit-listing/<%= logement.id %>" method="POST" enctype="multipart/form-data">
+            <!-- Section Informations de base -->
+            <section class="form-section">
+                <h2><i class="fas fa-info-circle"></i> Informations de base</h2>
+                <div class="form-group">
+                    <label for="name">Titre de l'annonce*</label>
+                    <input type="text" id="name" name="name" value="<%= logement.name %>" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="type">Type de logement*</label>
+                        <select id="type" name="type" required>
+                            <option value="Appartement" <%= logement.type === 'Appartement' ? 'selected' : '' %>>Appartement</option>
+                            <option value="Maison" <%= logement.type === 'Maison' ? 'selected' : '' %>>Maison</option>
+                            <option value="Studio" <%= logement.type === 'Studio' ? 'selected' : '' %>>Studio</option>
+                            <option value="Chalet" <%= logement.type === 'Chalet' ? 'selected' : '' %>>Chalet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prix">Prix par nuit (€)*</label>
+                        <input type="number" id="prix" name="prix" min="1" value="<%= logement.prix %>" required>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Détails -->
+            <section class="form-section">
+                <h2><i class="fas fa-home"></i> Détails du logement</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="surface">Surface (m²)</label>
+                        <input type="number" id="surface" name="surface" min="1" value="<%= logement.surface || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="capacite">Capacité (personnes)*</label>
+                        <input type="number" id="capacite" name="capacite" min="1" value="<%= logement.capacite %>" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="chambres">Chambres</label>
+                        <input type="number" id="chambres" name="chambres" min="0" value="<%= logement.chambres || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="salle_de_bain">Salles de bain</label>
+                        <input type="number" id="salle_de_bain" name="salle_de_bain" min="0" value="<%= logement.salle_de_bain || '' %>">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Description -->
+            <section class="form-section">
+                <h2><i class="fas fa-align-left"></i> Description</h2>
+                <div class="form-group">
+                    <label for="description">Description détaillée*</label>
+                    <textarea id="description" name="description" rows="5" required><%= logement.description %></textarea>
+                </div>
+            </section>
+
+            <!-- Section Photos -->
+            <section class="form-section">
+                <h2><i class="fas fa-camera"></i> Photos</h2>
+                <div class="form-group">
+                    <label>Photos actuelles</label>
+                    <div class="current-photos">
+                        <% logement.photos.forEach(photo => { %>
+                            <div class="photo-container">
+                                <img src="/images/<%= photo %>" alt="Photo du logement">
+                                <input type="hidden" name="existingPhotos[]" value="<%= photo %>">
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="photos">Ajouter de nouvelles images</label>
+                    <input type="file" id="photos" name="photos" multiple accept="image/*">
+                    <div id="preview-container" class="preview-container"></div>
+                </div>
+            </section>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Enregistrer les modifications</button>
+                <a href="/logement/<%= logement.id %>" class="cancel-btn">Annuler</a>
+            </div>
+        </form>
+
+        <form action="/delete-listing/<%= logement.id %>" method="POST" class="delete-form">
+            <button type="submit" class="delete-btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?')">
+                <i class="fas fa-trash"></i> Supprimer l'annonce
+            </button>
+        </form>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="/js/edit-listing.js"></script>
+</body>
+</html>

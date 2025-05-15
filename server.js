@@ -89,6 +89,53 @@ app.post('/add-listing', upload.array('photos', 5), (req, res) => {
     res.redirect(`/logement/${newId}`);
 });
 
+// Route pour afficher le formulaire de modification
+app.get('/edit-listing/:id', (req, res) => {
+    const logements = loadLogements();
+    const logement = logements.find(l => l.id == req.params.id);
+    if (!logement) return res.status(404).send('Logement non trouvé');
+    res.render('edit-listing', { logement });
+});
+
+// Route pour traiter la modification
+app.post('/edit-listing/:id', upload.array('photos', 5), (req, res) => {
+    try {
+        let logements = loadLogements();
+        const index = logements.findIndex(l => l.id == req.params.id);
+        
+        if (index === -1) {
+            return res.status(404).send('Logement non trouvé');
+        }
+
+        // Garder les anciennes photos si aucune nouvelle n'est uploadée
+        const oldPhotos = logements[index].photos;
+        const newPhotos = req.files.map(file => `uploads/${file.filename}`);
+        const finalPhotos = newPhotos.length > 0 ? newPhotos : oldPhotos;
+
+        const updatedListing = {
+            ...logements[index],
+            name: req.body.name,
+            photos: finalPhotos,
+            prix: parseInt(req.body.prix),
+            description: req.body.description,
+            type: req.body.type,
+            chambres: parseInt(req.body.chambres) || 0,
+            salle_de_bain: parseInt(req.body.salle_de_bain) || 0,
+            surface: parseInt(req.body.surface) || 0,
+            capacite: parseInt(req.body.capacite),
+            updatedAt: new Date().toISOString()
+        };
+
+        logements[index] = updatedListing;
+        saveLogements(logements);
+        
+        res.redirect(`/logement/${req.params.id}`);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erreur lors de la modification');
+    }
+});
+
 // Route pour supprimer un logement
 app.post('/delete-listing/:id', (req, res) => {
     let logements = loadLogements();

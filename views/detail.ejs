@@ -434,6 +434,17 @@
 
         
     </script>
+    <div class="action-buttons">
+    <a href="/edit-listing/<%= logement.id %>" class="edit-btn">
+        <i class="fas fa-edit"></i> Modifier
+    </a>
+    
+    <form action="/delete-listing/<%= logement.id %>" method="POST" class="delete-form">
+        <button type="submit" class="delete-btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?')">
+            <i class="fas fa-trash"></i> Supprimer
+        </button>
+    </form>
+</div>
   
 </body>
 </html>
