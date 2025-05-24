@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const path = require('path');
-const multer = require('multer'); // N'oubliez pas d'installer avec: npm install multer
+const multer = require('multer');
 const session = require('express-session');
 
 // Configuration de multer pour les uploads
@@ -20,12 +20,11 @@ app.use(session({
     secret: 'votre_secret_secure',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Mettez true si en HTTPS
+    cookie: { secure: false }
 }));
 
 // Middleware pour passer userId à toutes les vues
 app.use((req, res, next) => {
-    // Initialise les variables de vue
     res.locals.userId = req.session.userId;
     res.locals.isAdmin = false;
 
@@ -124,7 +123,7 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
-// Routes existantes
+//routes
 app.get('/', (req, res) => {
     const logements = loadLogements();
     res.render('accueil', { 
@@ -139,7 +138,6 @@ app.get('/logement/:id', (req, res) => {
     const logement = logements.find(l => l.id == req.params.id);
     if (!logement) return res.status(404).send('Logement non trouvé');
     
-    // Pas besoin de passer userId et isAdmin, déjà disponibles via res.locals
     res.render('detail', { logement });
 });
 
@@ -147,13 +145,13 @@ app.get('/maps', (req, res) => {
     res.render('maps');
 });
 
-// Nouvelle route pour afficher le formulaire d'ajout
+// Route pour afficher le formulaire d'ajout
 app.get('/add-listing', (req, res) => {
     if (!req.session.userId) return res.redirect('/login');
     res.render('add-listing');
 });
 
-// Route pour traiter la soumission du formulaire
+// Route pour traiter formulaire
 app.post('/add-listing', upload.array('photos', 5), (req, res) => {
     if (!req.session.userId) return res.redirect('/login');
 
@@ -260,7 +258,7 @@ app.post('/register', (req, res) => {
     const newUser = {
         id: newId,
         username,
-        password // À hasher en production !
+        password 
     };
     
     users.push(newUser);
@@ -270,7 +268,6 @@ app.post('/register', (req, res) => {
     res.redirect('/');
 });
 
-// Modifiez la route /logement/:id pour passer userId
 app.get('/logement/:id', (req, res) => {
     const logements = loadLogements();
     const logement = logements.find(l => l.id == req.params.id);
@@ -302,7 +299,7 @@ app.listen(3000, () => {
         users.push({
             id: 1,
             username: 'admin',
-            password: 'admin123' // À changer en production !
+            password: 'admin123' // Temporaire / pour l'exemple
         });
         saveUsers(users);
     }

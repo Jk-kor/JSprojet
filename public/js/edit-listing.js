@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const photoInput = document.getElementById('photos');
     const previewContainer = document.getElementById('preview-container');
 
-    // Prévisualisation des nouvelles images
     photoInput.addEventListener('change', function() {
         previewContainer.innerHTML = '';
         if (this.files) {
