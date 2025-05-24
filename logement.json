@@ -2,7 +2,7 @@
    {
     "id": 1,
     "name": "Appartement lumineux en cœur de Paris",
-    "photos": ["appart1.jpg", "paris-appart2.jpg", "paris-appart3.jpg"],
+    "photos": ["appart1.jpg", "appart2.jpg", "appart3.jpg", "appart4.jpg"],
     "prix": 120,
     "description": "Bel appartement rénové à deux pas du Marais. Parfait pour découvrir Paris avec tout le confort moderne. Séjour spacieux avec cuisine ouverte et grande baie vitrée.",
     "type": "Appartement",
@@ -24,7 +24,7 @@
   {
     "id": 2,
     "name": "Chalet cosy aux pieds des pistes",
-    "photos": ["chalet1.jpg", "chalet2.jpg", "chalet3.jpg", "chalet4.jpg"],
+    "photos": ["chalet1.jpg"],
     "prix": 180,
     "description": "Authentique chalet en bois avec cheminée et accès direct aux remontées mécaniques. Terrasse avec vue imprenable sur les montagnes. Idéal pour familles ou groupes.",
     "type": "Chalet",
@@ -46,7 +46,7 @@
   {
     "id": 3,
     "name": "Studio design près de la plage",
-    "photos": ["studio1.jpg", "studio2.jpg"],
+    "photos": ["studio1.jpg"],
     "prix": 75,
     "description": "Studio entièrement rénové à 5 minutes à pied de la plage. Décoration soignée et équipements neufs. Parfait pour couples ou voyageurs solo.",
     "type": "Studio",
@@ -68,7 +68,7 @@
   {
     "id": 4,
     "name": "Maison de campagne avec piscine",
-    "photos": ["maison1.jpg", "maison2.jpg", "maison3.jpg"],
+    "photos": ["maison1.jpg"],
     "prix": 220,
     "description": "Ancienne ferme rénovée avec charme, située dans un cadre paisible. Grand jardin arboré avec piscine chauffée (mai à septembre). Calme et nature garantis.",
     "type": "Maison",
@@ -90,7 +90,7 @@
   {
     "id": 5,
     "name": "Loft industriel en centre-ville",
-    "photos": ["loft1.jpg", "loft2.jpg", "loft3.jpg"],
+    "photos": ["loft1.jpg"],
     "prix": 160,
     "description": "Ancien atelier d'artiste transformé en loft avec hauts plafonds et poutres apparentes. Décoration unique et emplacement idéal pour découvrir la vie locale.",
     "type": "Loft",
@@ -112,7 +112,7 @@
   {
     "id": 6,
     "name": "Villa contemporaine bord de mer",
-    "photos": ["villa1.jpg", "villa2.jpg", "villa3.jpg"],
+    "photos": ["villa1.jpg"],
     "prix": 350,
     "description": "Architecture moderne avec piscine à débordement et accès privé à la plage. Grandes baies vitrées avec vue sur la Méditerranée. Luxe et discrétion.",
     "type": "Villa",
@@ -165,8 +165,7 @@
     "id": 8,
     "name": "Maison familiale à Lyon",
     "photos": [
-      "lyon1_photo1.jpg",
-      "lyon1_photo2.jpg"
+      "lyon1_photo1.jpg"
     ],
     "prix": 150,
     "description": "Spacieuse maison avec jardin dans un quartier calme de Lyon. Parfait pour les familles nombreuses.",
@@ -223,8 +222,7 @@
     "id": 10,
     "name": "Chalet en montagne à Chamonix",
     "photos": [
-      "chamonix1_photo1.jpg",
-      "chamonix1_photo2.jpg"
+      "chamonix1_photo1.jpg"
     ],
     "prix": 200,
     "description": "Chalet tout confort avec vue sur le Mont-Blanc. Ambiance rustique et chaleureuse.",
@@ -254,8 +252,7 @@
     "id": 11,
     "name": "Loft industriel à Lille",
     "photos": [
-      "lille1_photo1.jpg",
-      "lille1_photo2.jpg"
+      "lille1_photo1.jpg"
     ],
     "prix": 110,
     "description": "Loft spacieux au design industriel, parfait pour les voyageurs modernes et branchés.",
