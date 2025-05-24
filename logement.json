@@ -1,117 +1,32 @@
 [
-  {
+   {
     "id": 1,
-    "name": "Logement 1",
-    "photos": [
-      "photo1.jpg",
-      "photo2.jpg"
-    ],
-    "prix": 100,
-    "description": "baptiste ...",
-    "type": "Appartement",
-    "chambres": 2,
-    "salle_de_bain": 1,
-    "cuisine": 1,
-    "salon": 1,
-    "surface": 50,
-    "note": 4.5,
-    "capacite": 4,
-    "equipements": [
-      "wifi",
-      "tv",
-      "climatisation"
-    ],
-    "location": {
-      "city": "Paris",
-      "latitude": 48.8566,
-      "longitude": 2.3522,
-      "altitude": 13
-    }
-  },
-  {
-    "id": 2,
-    "name": "Appartement moderne",
-    "photos": [
-      "appartement.jpg",
-      "appartement-cuisine.jpg"
-    ],
-    "prix": 200,
-    "description": "Appartement lumineux avec vue sur la ville.",
-    "note": 4.3
-  },
-  {
-    "id": 3,
-    "name": "Cabane en forêt",
-    "photos": [
-      "cabane.jpg",
-      "cabane-interieur.jpg"
-    ],
+    "name": "Appartement lumineux en cœur de Paris",
+    "photos": ["appart1.jpg", "paris-appart2.jpg", "paris-appart3.jpg"],
     "prix": 120,
-    "description": "Une cabane cosy au cœur de la forêt, parfaite pour se déconnecter. c",
-    "note": 4.8,
-    "type": "Appartement",
-    "chambres": 2,
-    "salle_de_bain": 2,
-    "surface": 25,
-    "capacite": 2,
-    "updatedAt": "2025-05-24T15:12:55.432Z"
-  },
-  {
-    "id": 4,
-    "name": "Appartement de con",
-    "photos": [
-      "appartement.jpg",
-      "appartement-cuisine.jpg"
-    ],
-    "prix": 200,
-    "description": "Appartement lumineux avec vue sur la ville.",
-    "note": 4.3
-  },
-  {
-    "id": 5,
-    "name": "Appartement de bébé",
-    "photos": [
-      "appartement.jpg",
-      "appartement-cuisine.jpg"
-    ],
-    "prix": 200,
-    "description": "Appartement lumineux avec vue sur la ville.",
-    "note": 4.3
-  },
-  {
-    "id": 6,
-    "name": "Appartement moderne - Centre-ville",
-    "photos": [
-      "appart1.jpg",
-      "appart1-2.jpg",
-      "appart1-3.jpg"
-    ],
-    "prix": 120,
-    "description": "Appartement lumineux en plein cœur de la ville avec vue sur les toits. Parfait pour les voyageurs en quête d'authenticité.",
+    "description": "Bel appartement rénové à deux pas du Marais. Parfait pour découvrir Paris avec tout le confort moderne. Séjour spacieux avec cuisine ouverte et grande baie vitrée.",
     "type": "Appartement",
     "chambres": 2,
     "salle_de_bain": 1,
     "cuisine": 1,
     "salon": 1,
     "surface": 65,
-    "note": 4.7,
+    "note": 4.8,
     "capacite": 4,
+    "equipements": ["wifi", "tv", "climatisation", "lave-linge", "ustensiles"],
     "location": {
       "city": "Paris",
-      "latitude": 48.8566,
-      "longitude": 2.3522
+      "latitude": 48.8606,
+      "longitude": 2.3522,
+      "altitude": 35
     }
   },
   {
-    "id": 7,
-    "name": "Chalet montagnard - Vue panoramique",
-    "photos": [
-      "chalet1.jpg",
-      "chalet2.jpg",
-      "chalet3.jpg"
-    ],
+    "id": 2,
+    "name": "Chalet cosy aux pieds des pistes",
+    "photos": ["chalet1.jpg", "chalet2.jpg", "chalet3.jpg", "chalet4.jpg"],
     "prix": 180,
-    "description": "Authentique chalet en bois avec cheminée et accès direct aux pistes. Terrasse avec vue imprenable sur les montagnes.",
+    "description": "Authentique chalet en bois avec cheminée et accès direct aux remontées mécaniques. Terrasse avec vue imprenable sur les montagnes. Idéal pour familles ou groupes.",
     "type": "Chalet",
     "chambres": 3,
     "salle_de_bain": 2,
@@ -120,21 +35,20 @@
     "surface": 90,
     "note": 4.9,
     "capacite": 6,
+    "equipements": ["wifi", "tv", "cheminée", "parking", "terrasse"],
     "location": {
       "city": "Chamonix",
       "latitude": 45.9237,
-      "longitude": 6.8694
+      "longitude": 6.8694,
+      "altitude": 1035
     }
   },
   {
-    "id": 8,
-    "name": "Studio cosy - Quartier branché",
-    "photos": [
-      "studio1.jpg",
-      "studio2.jpg"
-    ],
+    "id": 3,
+    "name": "Studio design près de la plage",
+    "photos": ["studio1.jpg", "studio2.jpg"],
     "prix": 75,
-    "description": "Studio entièrement rénové avec décoration design. Idéal pour les séjours courts en ville. Proche de tous commerces.",
+    "description": "Studio entièrement rénové à 5 minutes à pied de la plage. Décoration soignée et équipements neufs. Parfait pour couples ou voyageurs solo.",
     "type": "Studio",
     "chambres": 1,
     "salle_de_bain": 1,
@@ -143,46 +57,42 @@
     "surface": 30,
     "note": 4.3,
     "capacite": 2,
+    "equipements": ["wifi", "climatisation", "serviettes"],
     "location": {
-      "city": "Lyon",
-      "latitude": 45.764,
-      "longitude": 4.8357
+      "city": "Nice",
+      "latitude": 43.7000,
+      "longitude": 7.2667,
+      "altitude": 10
     }
   },
   {
-    "id": 9,
-    "name": "Maison de campagne - Piscine privée",
-    "photos": [
-      "maison1.jpg",
-      "maison2.jpg",
-      "maison3.jpg",
-      "maison4.jpg"
-    ],
+    "id": 4,
+    "name": "Maison de campagne avec piscine",
+    "photos": ["maison1.jpg", "maison2.jpg", "maison3.jpg"],
     "prix": 220,
-    "description": "Ancienne ferme rénovée avec charme, grand jardin arboré et piscine chauffée. Calme garantie.",
+    "description": "Ancienne ferme rénovée avec charme, située dans un cadre paisible. Grand jardin arboré avec piscine chauffée (mai à septembre). Calme et nature garantis.",
     "type": "Maison",
     "chambres": 4,
     "salle_de_bain": 2,
     "cuisine": 1,
     "salon": 2,
     "surface": 150,
-    "note": 4.8,
+    "note": 4.7,
     "capacite": 8,
+    "equipements": ["wifi", "tv", "piscine", "barbecue", "jardin"],
     "location": {
       "city": "Provence",
       "latitude": 43.9352,
-      "longitude": 6.0679
+      "longitude": 6.0679,
+      "altitude": 450
     }
   },
   {
-    "id": 10,
-    "name": "Loft industriel - Quartier artistique",
-    "photos": [
-      "loft1.jpg",
-      "loft2.jpg"
-    ],
+    "id": 5,
+    "name": "Loft industriel en centre-ville",
+    "photos": ["loft1.jpg", "loft2.jpg", "loft3.jpg"],
     "prix": 160,
-    "description": "Ancien atelier transformé en loft avec hauts plafonds et grandes baies vitrées. Décoration unique d'artiste local.",
+    "description": "Ancien atelier d'artiste transformé en loft avec hauts plafonds et poutres apparentes. Décoration unique et emplacement idéal pour découvrir la vie locale.",
     "type": "Loft",
     "chambres": 1,
     "salle_de_bain": 1,
@@ -191,22 +101,20 @@
     "surface": 70,
     "note": 4.6,
     "capacite": 3,
+    "equipements": ["wifi", "tv", "espace-travail", "machine-à-café"],
     "location": {
       "city": "Bordeaux",
       "latitude": 44.8378,
-      "longitude": -0.5792
+      "longitude": -0.5792,
+      "altitude": 20
     }
   },
   {
-    "id": 11,
-    "name": "Villa contemporaine - Bord de mer",
-    "photos": [
-      "villa1.jpg",
-      "villa2.jpg",
-      "villa3.jpg"
-    ],
+    "id": 6,
+    "name": "Villa contemporaine bord de mer",
+    "photos": ["villa1.jpg", "villa2.jpg", "villa3.jpg"],
     "prix": 350,
-    "description": "Architecture moderne avec piscine à débordement et accès privé à la plage. Parfait pour des vacances luxueuses.",
+    "description": "Architecture moderne avec piscine à débordement et accès privé à la plage. Grandes baies vitrées avec vue sur la Méditerranée. Luxe et discrétion.",
     "type": "Villa",
     "chambres": 5,
     "salle_de_bain": 3,
@@ -215,10 +123,161 @@
     "surface": 200,
     "note": 4.9,
     "capacite": 10,
+    "equipements": ["wifi", "tv", "piscine", "jacuzzi", "service-menage"],
     "location": {
       "city": "Saint-Tropez",
       "latitude": 43.2692,
-      "longitude": 6.6397
+      "longitude": 6.6397,
+      "altitude": 15
+    }
+  },
+  
+  {
+    "id": 7,
+    "name": "Appartement Chic à Paris",
+    "photos": [
+      "appartement.jpg"
+    ],
+    "prix": 120,
+    "description": "Un appartement moderne et lumineux au cœur de Paris, idéal pour les couples ou les petites familles.",
+    "type": "Appartement",
+    "chambres": 1,
+    "salle_de_bain": 1,
+    "cuisine": 1,
+    "salon": 1,
+    "surface": 45,
+    "note": 4.7,
+    "capacite": 3,
+    "equipements": [
+      "wifi",
+      "tv",
+      "climatisation",
+      "machine à laver"
+    ],
+    "location": {
+      "city": "Paris",
+      "latitude": 48.8534,
+      "longitude": 2.3488,
+      "altitude": 35
+    }
+  },
+  {
+    "id": 8,
+    "name": "Maison familiale à Lyon",
+    "photos": [
+      "lyon1_photo1.jpg",
+      "lyon1_photo2.jpg"
+    ],
+    "prix": 150,
+    "description": "Spacieuse maison avec jardin dans un quartier calme de Lyon. Parfait pour les familles nombreuses.",
+    "type": "Maison",
+    "chambres": 3,
+    "salle_de_bain": 2,
+    "cuisine": 1,
+    "salon": 1,
+    "surface": 120,
+    "note": 4.8,
+    "capacite": 6,
+    "equipements": [
+      "wifi",
+      "tv",
+      "parking",
+      "lave-vaisselle",
+      "jardin"
+    ],
+    "location": {
+      "city": "Lyon",
+      "latitude": 45.7578,
+      "longitude": 4.8320,
+      "altitude": 170
+    }
+  },
+  {
+    "id": 9,
+    "name": "Studio cosy à Marseille",
+    "photos": [
+      "marseille1_photo1.jpg"
+    ],
+    "prix": 70,
+    "description": "Petit studio bien équipé, à deux pas du Vieux-Port. Idéal pour les voyageurs en solo ou les couples.",
+    "type": "Studio",
+    "chambres": 1,
+    "salle_de_bain": 1,
+    "cuisine": 1,
+    "salon": 0,
+    "surface": 30,
+    "note": 4.2,
+    "capacite": 2,
+    "equipements": [
+      "wifi",
+      "climatisation"
+    ],
+    "location": {
+      "city": "Marseille",
+      "latitude": 43.2965,
+      "longitude": 5.3698,
+      "altitude": 10
+    }
+  },
+  {
+    "id": 10,
+    "name": "Chalet en montagne à Chamonix",
+    "photos": [
+      "chamonix1_photo1.jpg",
+      "chamonix1_photo2.jpg"
+    ],
+    "prix": 200,
+    "description": "Chalet tout confort avec vue sur le Mont-Blanc. Ambiance rustique et chaleureuse.",
+    "type": "Chalet",
+    "chambres": 4,
+    "salle_de_bain": 2,
+    "cuisine": 1,
+    "salon": 1,
+    "surface": 150,
+    "note": 4.9,
+    "capacite": 8,
+    "equipements": [
+      "wifi",
+      "cheminée",
+      "jacuzzi",
+      "tv",
+      "parking"
+    ],
+    "location": {
+      "city": "Chamonix",
+      "latitude": 45.9237,
+      "longitude": 6.8694,
+      "altitude": 1035
+    }
+  },
+  {
+    "id": 11,
+    "name": "Loft industriel à Lille",
+    "photos": [
+      "lille1_photo1.jpg",
+      "lille1_photo2.jpg"
+    ],
+    "prix": 110,
+    "description": "Loft spacieux au design industriel, parfait pour les voyageurs modernes et branchés.",
+    "type": "Loft",
+    "chambres": 2,
+    "salle_de_bain": 1,
+    "cuisine": 1,
+    "salon": 1,
+    "surface": 80,
+    "note": 4.6,
+    "capacite": 4,
+    "equipements": [
+      "wifi",
+      "tv",
+      "machine à café",
+      "ascenseur"
+    ],
+    "location": {
+      "city": "Lille",
+      "latitude": 50.6292,
+      "longitude": 3.0573,
+      "altitude": 18
     }
   }
 ]
