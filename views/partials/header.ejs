@@ -8,6 +8,9 @@
             <ul>
                <% if (userId) { %>
     <li><a href="/add-listing">Créer une annonce</a></li>
+     <% if (isAdmin) { %>
+        <li><span style="color: gold;"><i class="fas fa-crown"></i> Admin</span></li>
+    <% } %>
     <li><a href="/logout">Déconnexion</a></li>
 <% } else { %>
     <li><a href="/login">Connexion</a></li>

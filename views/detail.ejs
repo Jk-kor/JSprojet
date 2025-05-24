@@ -219,7 +219,7 @@
     </main>
 
 <div class="container">
-    <% if (userId && logement.ownerId === userId) { %>
+    <% if (userId && (logement.ownerId === userId || isAdmin)) { %>
     <div class="action-buttons">
         <a href="/edit-listing/<%= logement.id %>" class="edit-btn">
             <i class="fas fa-edit"></i> Modifier

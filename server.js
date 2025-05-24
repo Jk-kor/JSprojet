@@ -25,7 +25,20 @@ app.use(session({
 
 // Middleware pour passer userId à toutes les vues
 app.use((req, res, next) => {
+    // Initialise les variables de vue
     res.locals.userId = req.session.userId;
+    res.locals.isAdmin = false;
+
+    // Si utilisateur connecté
+    if (req.session.userId) {
+        const users = loadUsers();
+        const user = users.find(u => u.id === req.session.userId);
+        
+        if (user) {
+            res.locals.isAdmin = user.username === 'admin';
+        }
+    }
+    
     next();
 });
 // Chemin vers le fichier JSON
@@ -64,10 +77,14 @@ function saveLogements(logements) {
 }
 
 // middleware verification de connection
-function isOwner(req, res, next) {
+function isOwnerOrAdmin(req, res, next) {
     if (!req.session.userId) {
         return res.redirect('/login');
     }
+    
+    const users = loadUsers();
+    const currentUser = users.find(u => u.id === req.session.userId);
+    const isAdmin = currentUser.username === 'admin'; // Vérifie si l'utilisateur est admin
     
     const logements = loadLogements();
     const logement = logements.find(l => l.id == req.params.id);
@@ -75,10 +92,13 @@ function isOwner(req, res, next) {
     if (!logement) {
         return res.status(404).send('Logement non trouvé');
     }
-    if (logement.ownerId !== req.session.userId) {
-        return res.status(403).send('Action non autorisée');
+    
+    // Autorise si admin OU si propriétaire
+    if (isAdmin || logement.ownerId === req.session.userId) {
+        return next();
     }
-    next();
+    
+    res.status(403).send('Action non autorisée');
 }
 
 // Routes de connexion
@@ -118,10 +138,9 @@ app.get('/logement/:id', (req, res) => {
     const logements = loadLogements();
     const logement = logements.find(l => l.id == req.params.id);
     if (!logement) return res.status(404).send('Logement non trouvé');
-    res.render('detail', { 
-        logement,
-        userId: req.session.userId 
-    });
+    
+    // Pas besoin de passer userId et isAdmin, déjà disponibles via res.locals
+    res.render('detail', { logement });
 });
 
 app.get('/maps', (req, res) => {
@@ -174,7 +193,7 @@ app.post('/add-listing', upload.array('photos', 5), (req, res) => {
 });
 
 // Route pour afficher le formulaire de modification
-app.get('/edit-listing/:id', isOwner, (req, res) => { 
+app.get('/edit-listing/:id', isOwnerOrAdmin, (req, res) => { 
     const logements = loadLogements();
     const logement = logements.find(l => l.id == req.params.id);
     if (!logement) return res.status(404).send('Logement non trouvé');
@@ -182,7 +201,7 @@ app.get('/edit-listing/:id', isOwner, (req, res) => {
 });
 
 // Route pour traiter la modification
-app.post('/edit-listing/:id', isOwner , upload.array('photos', 5), (req, res) => {
+app.post('/edit-listing/:id', isOwnerOrAdmin , upload.array('photos', 5), (req, res) => {
     try {
         let logements = loadLogements();
         const index = logements.findIndex(l => l.id == req.params.id);
@@ -220,9 +239,6 @@ app.post('/edit-listing/:id', isOwner , upload.array('photos', 5), (req, res) =>
     }
 });
 
-const users = [
-    { id: 1, username: 'admin', password: 'admin123' } // À remplacer par un système sécurisé
-];
 
 app.get('/register', (req, res) => {
     res.render('register', { error: req.query.error });
@@ -266,7 +282,7 @@ app.get('/logement/:id', (req, res) => {
 });
 
 // Route pour supprimer un logement
-app.post('/delete-listing/:id', isOwner , (req, res) => {
+app.post('/delete-listing/:id', isOwnerOrAdmin, (req, res) => {
     let logements = loadLogements();
     const initialLength = logements.length;
     
