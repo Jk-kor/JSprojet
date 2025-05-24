@@ -43,6 +43,21 @@ function loadLogements() {
     }
 }
 
+const USERS_FILE = path.join(__dirname, 'users.json');
+
+function loadUsers() {
+    try {
+        return JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
+    } catch (err) {
+        console.error("Erreur de lecture du fichier users.json", err);
+        return [];
+    }
+}
+
+function saveUsers(users) {
+    fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
+}
+
 // Middleware pour sauvegarder les logements
 function saveLogements(logements) {
     fs.writeFileSync(LOGEMENTS_FILE, JSON.stringify(logements, null, 2));
@@ -50,10 +65,16 @@ function saveLogements(logements) {
 
 // middleware verification de connection
 function isOwner(req, res, next) {
+    if (!req.session.userId) {
+        return res.redirect('/login');
+    }
+    
     const logements = loadLogements();
     const logement = logements.find(l => l.id == req.params.id);
     
-    if (!logement) return res.status(404).send('Logement non trouvé');
+    if (!logement) {
+        return res.status(404).send('Logement non trouvé');
+    }
     if (logement.ownerId !== req.session.userId) {
         return res.status(403).send('Action non autorisée');
     }
@@ -66,12 +87,17 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    if (req.body.username === 'admin' && req.body.password === 'admin123') {
-        req.session.userId = 1; // ID simplifié
+    const users = loadUsers();
+    const { username, password } = req.body;
+    const user = users.find(u => u.username === username && u.password === password);
+    
+    if (user) {
+        req.session.userId = user.id;
         return res.redirect('/');
     }
     res.redirect('/login?error=1');
 });
+
 
 app.get('/logout', (req, res) => {
     req.session.destroy();
@@ -104,11 +130,14 @@ app.get('/maps', (req, res) => {
 
 // Nouvelle route pour afficher le formulaire d'ajout
 app.get('/add-listing', (req, res) => {
+    if (!req.session.userId) return res.redirect('/login');
     res.render('add-listing');
 });
 
 // Route pour traiter la soumission du formulaire
 app.post('/add-listing', upload.array('photos', 5), (req, res) => {
+    if (!req.session.userId) return res.redirect('/login');
+
     const logements = loadLogements();
     
     // Générer un nouvel ID
@@ -191,6 +220,51 @@ app.post('/edit-listing/:id', isOwner , upload.array('photos', 5), (req, res) =>
     }
 });
 
+const users = [
+    { id: 1, username: 'admin', password: 'admin123' } // À remplacer par un système sécurisé
+];
+
+app.get('/register', (req, res) => {
+    res.render('register', { error: req.query.error });
+});
+
+// Route d'inscription
+app.post('/register', (req, res) => {
+    const users = loadUsers();
+    const { username, password, confirmPassword } = req.body;
+    
+    if (password !== confirmPassword) {
+        return res.render('register', { error: 'Les mots de passe ne correspondent pas' });
+    }
+    if (users.some(u => u.username === username)) {
+        return res.render('register', { error: 'Ce nom d\'utilisateur existe déjà' });
+    }
+
+    const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
+    const newUser = {
+        id: newId,
+        username,
+        password // À hasher en production !
+    };
+    
+    users.push(newUser);
+    saveUsers(users);
+    
+    req.session.userId = newUser.id;
+    res.redirect('/');
+});
+
+// Modifiez la route /logement/:id pour passer userId
+app.get('/logement/:id', (req, res) => {
+    const logements = loadLogements();
+    const logement = logements.find(l => l.id == req.params.id);
+    if (!logement) return res.status(404).send('Logement non trouvé');
+    res.render('detail', { 
+        logement,
+        userId: req.session.userId 
+    });
+});
+
 // Route pour supprimer un logement
 app.post('/delete-listing/:id', isOwner , (req, res) => {
     let logements = loadLogements();
@@ -207,6 +281,15 @@ app.post('/delete-listing/:id', isOwner , (req, res) => {
 });
 
 app.listen(3000, () => {
+     const users = loadUsers();
+    if (!users.some(u => u.username === 'admin')) {
+        users.push({
+            id: 1,
+            username: 'admin',
+            password: 'admin123' // À changer en production !
+        });
+        saveUsers(users);
+    }
     console.log("Serveur lancé sur http://localhost:3000");
     // Créer le dossier uploads s'il n'existe pas
     if (!fs.existsSync('public/images/uploads')) {
