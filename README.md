@@ -51,6 +51,7 @@ Plateforme web de location de logements de vacances développée avec Node.js/Ex
 1. Cloner le dépôt :
 ```bash
 git clone https://github.com/Jk-kor/JSprojet.git
+```
 
 2. Installer les dépendances :
 ```bash
