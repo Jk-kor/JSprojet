@@ -16,6 +16,11 @@
     "surface": 50,
     "note": 4.5,
     "capacite": 4,
+    "equipements": [
+      "wifi",
+      "tv",
+      "climatisation"
+    ],
     "location": {
       "city": "Paris",
       "latitude": 48.8566,
@@ -42,8 +47,14 @@
       "cabane-interieur.jpg"
     ],
     "prix": 120,
-    "description": "Une cabane cosy au cœur de la forêt, parfaite pour se déconnecter.",
-    "note": 4.8
+    "description": "Une cabane cosy au cœur de la forêt, parfaite pour se déconnecter. c",
+    "note": 4.8,
+    "type": "Appartement",
+    "chambres": 2,
+    "salle_de_bain": 2,
+    "surface": 25,
+    "capacite": 2,
+    "updatedAt": "2025-05-24T15:12:55.432Z"
   },
   {
     "id": 4,

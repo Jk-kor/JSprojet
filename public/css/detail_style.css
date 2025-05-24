@@ -655,4 +655,90 @@ footer {
 .cancel-btn:hover {
     background-color: #f5f5f5;
 }
+/* Styles pour les boutons d'action */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 30px 0;
+    justify-content: center;
+}
+
+.action-buttons a, 
+.action-buttons button {
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.edit-btn {
+    background-color: #FF5A5F;
+    color: white;
+    border: none;
+}
+
+.edit-btn:hover {
+    background-color: #e04a50;
+}
+
+.delete-btn {
+    background-color: white;
+    color: #FF5A5F;
+    border: 1px solid #FF5A5F;
+}
+
+.delete-btn:hover {
+    background-color: #fff0f0;
+}
+}
+
+/* Styles pour les boutons d'action */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 30px 0;
+    justify-content: center;
+}
+
+.action-buttons a, 
+.action-buttons button {
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.edit-btn {
+    background-color: #FF5A5F;
+    color: white;
+    border: none;
+}
+
+.edit-btn:hover {
+    background-color: #e04a50;
+}
+
+.delete-btn {
+    background-color: white;
+    color: #FF5A5F;
+    border: 1px solid #FF5A5F;
+}
+
+.delete-btn:hover {
+    background-color: #fff0f0;
+}
+
+.option-item.not-available {
+    opacity: 0.5;
+    text-decoration: line-through;
 }

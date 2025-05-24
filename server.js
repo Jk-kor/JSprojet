@@ -3,6 +3,7 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer'); // N'oubliez pas d'installer avec: npm install multer
+const session = require('express-session');
 
 // Configuration de multer pour les uploads
 const upload = multer({ 
@@ -14,8 +15,23 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
+
+app.use(session({
+    secret: 'votre_secret_secure',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Mettez true si en HTTPS
+}));
+
+// Middleware pour passer userId à toutes les vues
+app.use((req, res, next) => {
+    res.locals.userId = req.session.userId;
+    next();
+});
 // Chemin vers le fichier JSON
 const LOGEMENTS_FILE = path.join(__dirname, 'logement.json');
+
+
 
 // Middleware pour charger les logements
 function loadLogements() {
@@ -32,17 +48,54 @@ function saveLogements(logements) {
     fs.writeFileSync(LOGEMENTS_FILE, JSON.stringify(logements, null, 2));
 }
 
+// middleware verification de connection
+function isOwner(req, res, next) {
+    const logements = loadLogements();
+    const logement = logements.find(l => l.id == req.params.id);
+    
+    if (!logement) return res.status(404).send('Logement non trouvé');
+    if (logement.ownerId !== req.session.userId) {
+        return res.status(403).send('Action non autorisée');
+    }
+    next();
+}
+
+// Routes de connexion
+app.get('/login', (req, res) => {
+    res.render('login', { error: req.query.error });
+});
+
+app.post('/login', (req, res) => {
+    if (req.body.username === 'admin' && req.body.password === 'admin123') {
+        req.session.userId = 1; // ID simplifié
+        return res.redirect('/');
+    }
+    res.redirect('/login?error=1');
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
+
 // Routes existantes
 app.get('/', (req, res) => {
     const logements = loadLogements();
-    res.render('accueil', { logements });
+    res.render('accueil', { 
+        logements,
+        userId: req.session.userId 
+    });
 });
+
 
 app.get('/logement/:id', (req, res) => {
     const logements = loadLogements();
     const logement = logements.find(l => l.id == req.params.id);
     if (!logement) return res.status(404).send('Logement non trouvé');
-    res.render('detail', { logement });
+    res.render('detail', { 
+        logement,
+        userId: req.session.userId 
+    });
 });
 
 app.get('/maps', (req, res) => {
@@ -66,6 +119,7 @@ app.post('/add-listing', upload.array('photos', 5), (req, res) => {
     
     // Créer le nouveau logement
     const newListing = {
+        ownerId: req.session.userId,
         id: newId,
         name: req.body.name,
         photos: photos.length ? photos : ['default.jpg'], // Photo par défaut si aucune uploadée
@@ -79,6 +133,7 @@ app.post('/add-listing', upload.array('photos', 5), (req, res) => {
         surface: parseInt(req.body.surface) || 0,
         note: 0, // Nouvelle annonce sans note
         capacite: parseInt(req.body.capacite),
+        equipements: req.body.equipements || [], 
         createdAt: new Date().toISOString()
     };
 
@@ -90,7 +145,7 @@ app.post('/add-listing', upload.array('photos', 5), (req, res) => {
 });
 
 // Route pour afficher le formulaire de modification
-app.get('/edit-listing/:id', (req, res) => {
+app.get('/edit-listing/:id', isOwner, (req, res) => { 
     const logements = loadLogements();
     const logement = logements.find(l => l.id == req.params.id);
     if (!logement) return res.status(404).send('Logement non trouvé');
@@ -98,7 +153,7 @@ app.get('/edit-listing/:id', (req, res) => {
 });
 
 // Route pour traiter la modification
-app.post('/edit-listing/:id', upload.array('photos', 5), (req, res) => {
+app.post('/edit-listing/:id', isOwner , upload.array('photos', 5), (req, res) => {
     try {
         let logements = loadLogements();
         const index = logements.findIndex(l => l.id == req.params.id);
@@ -137,7 +192,7 @@ app.post('/edit-listing/:id', upload.array('photos', 5), (req, res) => {
 });
 
 // Route pour supprimer un logement
-app.post('/delete-listing/:id', (req, res) => {
+app.post('/delete-listing/:id', isOwner , (req, res) => {
     let logements = loadLogements();
     const initialLength = logements.length;
     

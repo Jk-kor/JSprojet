@@ -111,35 +111,33 @@
                         
                 
                         
-                        <section class="info-section">
-                            <h2 class="section-title">Équipements</h2>
-                            <div class="options-grid">
-                                <div class="option-item">
-                                    <i class="fas fa-wifi"></i>
-                                    <span>Wi-Fi</span>
-                                </div>
-                                <div class="option-item">
-                                    <i class="fas fa-tv"></i>
-                                    <span>Télévision</span>
-                                </div>
-                                <div class="option-item">
-                                    <i class="fas fa-snowflake"></i>
-                                    <span>Climatisation</span>
-                                </div>
-                                <div class="option-item">
-                                    <i class="fas fa-bed"></i>
-                                    <span>Lit</span>
-                                </div>
-                                <div class="option-item">
-                                    <i class="fas fa-tshirt"></i>
-                                    <span>Lave-linge</span>
-                                </div>
-                                <div class="option-item">
-                                    <i class="fas fa-utensils"></i>
-                                    <span>Ustensiles de cuisine</span>
-                                </div>
-                            </div>
-                        </section>
+ <section class="info-section">
+    <h2 class="section-title">Équipements</h2>
+    <div class="options-grid">
+        <% const equipements = logement.equipements || []; %>
+        <div class="option-item <%= equipements.includes('wifi') ? '' : 'not-available' %>">
+            <i class="fas fa-wifi"></i>
+            <span>Wi-Fi</span>
+        </div>
+        <div class="option-item <%= equipements.includes('tv') ? '' : 'not-available' %>">
+            <i class="fas fa-tv"></i>
+            <span>Télévision</span>
+        </div>
+        <div class="option-item <%= equipements.includes('climatisation') ? '' : 'not-available' %>">
+            <i class="fas fa-snowflake"></i>
+            <span>Climatisation</span>
+        </div>
+        <div class="option-item <%= equipements.includes('linge') ? '' : 'not-available' %>">
+            <i class="fas fa-tshirt"></i>
+            <span>Lave-linge</span>
+        </div>
+        <div class="option-item <%= equipements.includes('ustensiles') ? '' : 'not-available' %>">
+            <i class="fas fa-utensils"></i>
+            <span>Ustensiles</span>
+        </div>
+    </div>
+</section>
+
                         <section class="info-section">
                             <h2 class="section-title">Localisation</h2>
                             <div id="mapid" style="height: 300px; width: 700px; margin-top: 15px; border: #968c8c solid 2px;"></div>
@@ -219,6 +217,20 @@
             <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
         </div>
     </main>
+
+<div class="container">
+    <div class="action-buttons">
+        <a href="/edit-listing/<%= logement.id %>" class="edit-btn">
+            <i class="fas fa-edit"></i> Modifier
+        </a>
+        
+        <form action="/delete-listing/<%= logement.id %>" method="POST" class="delete-form">
+            <button type="submit" class="delete-btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?')">
+                <i class="fas fa-trash"></i> Supprimer
+            </button>
+        </form>
+    </div>
+</div>
 
 <%- include('partials/footer') %>
 
@@ -434,17 +446,6 @@
 
         
     </script>
-    <div class="action-buttons">
-    <a href="/edit-listing/<%= logement.id %>" class="edit-btn">
-        <i class="fas fa-edit"></i> Modifier
-    </a>
-    
-    <form action="/delete-listing/<%= logement.id %>" method="POST" class="delete-form">
-        <button type="submit" class="delete-btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?')">
-            <i class="fas fa-trash"></i> Supprimer
-        </button>
-    </form>
-</div>
   
 </body>
 </html>

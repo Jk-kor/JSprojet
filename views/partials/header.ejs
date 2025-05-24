@@ -2,16 +2,16 @@
 <header>
     <div class="header-container">
         <div class="logo">
-            <a href="/"><i class="fas fa-home"></i> airair</a>
+            <a href="/">MonAirbnb</a>
         </div>
         <nav>
             <ul>
-                <li><a href="/">Accueil</a></li>
-                <li>
-                    <a href="/add-listing" class="add-listing-btn">
-                        <i class="fas fa-plus"></i> Ajouter une annonce
-                    </a>
-                </li>
+                <% if (userId) { %>
+                    <li><a href="/add-listing">Créer une annonce</a></li>
+                    <li><a href="/logout">Déconnexion</a></li>
+                <% } else { %>
+                    <li><a href="/login">Connexion</a></li>
+                <% } %>
             </ul>
         </nav>
     </div>
