@@ -1,8 +1,13 @@
 [
-   {
+  {
     "id": 1,
     "name": "Appartement lumineux en cœur de Paris",
-    "photos": ["appart1.jpg", "appart2.jpg", "appart3.jpg", "appart4.jpg"],
+    "photos": [
+      "appart1.jpg",
+      "appart2.jpg",
+      "appart3.jpg",
+      "appart4.jpg"
+    ],
     "prix": 120,
     "description": "Bel appartement rénové à deux pas du Marais. Parfait pour découvrir Paris avec tout le confort moderne. Séjour spacieux avec cuisine ouverte et grande baie vitrée.",
     "type": "Appartement",
@@ -13,7 +18,13 @@
     "surface": 65,
     "note": 4.8,
     "capacite": 4,
-    "equipements": ["wifi", "tv", "climatisation", "lave-linge", "ustensiles"],
+    "equipements": [
+      "wifi",
+      "tv",
+      "climatisation",
+      "lave-linge",
+      "ustensiles"
+    ],
     "location": {
       "city": "Paris",
       "latitude": 48.8606,
@@ -24,7 +35,9 @@
   {
     "id": 2,
     "name": "Chalet cosy aux pieds des pistes",
-    "photos": ["chalet1.jpg"],
+    "photos": [
+      "chalet1.jpg"
+    ],
     "prix": 180,
     "description": "Authentique chalet en bois avec cheminée et accès direct aux remontées mécaniques. Terrasse avec vue imprenable sur les montagnes. Idéal pour familles ou groupes.",
     "type": "Chalet",
@@ -35,7 +48,13 @@
     "surface": 90,
     "note": 4.9,
     "capacite": 6,
-    "equipements": ["wifi", "tv", "cheminée", "parking", "terrasse"],
+    "equipements": [
+      "wifi",
+      "tv",
+      "cheminée",
+      "parking",
+      "terrasse"
+    ],
     "location": {
       "city": "Chamonix",
       "latitude": 45.9237,
@@ -46,7 +65,9 @@
   {
     "id": 3,
     "name": "Studio design près de la plage",
-    "photos": ["studio1.jpg"],
+    "photos": [
+      "studio1.jpg"
+    ],
     "prix": 75,
     "description": "Studio entièrement rénové à 5 minutes à pied de la plage. Décoration soignée et équipements neufs. Parfait pour couples ou voyageurs solo.",
     "type": "Studio",
@@ -57,10 +78,14 @@
     "surface": 30,
     "note": 4.3,
     "capacite": 2,
-    "equipements": ["wifi", "climatisation", "serviettes"],
+    "equipements": [
+      "wifi",
+      "climatisation",
+      "serviettes"
+    ],
     "location": {
       "city": "Nice",
-      "latitude": 43.7000,
+      "latitude": 43.7,
       "longitude": 7.2667,
       "altitude": 10
     }
@@ -68,7 +93,9 @@
   {
     "id": 4,
     "name": "Maison de campagne avec piscine",
-    "photos": ["maison1.jpg"],
+    "photos": [
+      "maison1.jpg"
+    ],
     "prix": 220,
     "description": "Ancienne ferme rénovée avec charme, située dans un cadre paisible. Grand jardin arboré avec piscine chauffée (mai à septembre). Calme et nature garantis.",
     "type": "Maison",
@@ -79,7 +106,13 @@
     "surface": 150,
     "note": 4.7,
     "capacite": 8,
-    "equipements": ["wifi", "tv", "piscine", "barbecue", "jardin"],
+    "equipements": [
+      "wifi",
+      "tv",
+      "piscine",
+      "barbecue",
+      "jardin"
+    ],
     "location": {
       "city": "Provence",
       "latitude": 43.9352,
@@ -90,7 +123,9 @@
   {
     "id": 5,
     "name": "Loft industriel en centre-ville",
-    "photos": ["loft1.jpg"],
+    "photos": [
+      "loft1.jpg"
+    ],
     "prix": 160,
     "description": "Ancien atelier d'artiste transformé en loft avec hauts plafonds et poutres apparentes. Décoration unique et emplacement idéal pour découvrir la vie locale.",
     "type": "Loft",
@@ -101,7 +136,12 @@
     "surface": 70,
     "note": 4.6,
     "capacite": 3,
-    "equipements": ["wifi", "tv", "espace-travail", "machine-à-café"],
+    "equipements": [
+      "wifi",
+      "tv",
+      "espace-travail",
+      "machine-à-café"
+    ],
     "location": {
       "city": "Bordeaux",
       "latitude": 44.8378,
@@ -112,7 +152,9 @@
   {
     "id": 6,
     "name": "Villa contemporaine bord de mer",
-    "photos": ["villa1.jpg"],
+    "photos": [
+      "villa1.jpg"
+    ],
     "prix": 350,
     "description": "Architecture moderne avec piscine à débordement et accès privé à la plage. Grandes baies vitrées avec vue sur la Méditerranée. Luxe et discrétion.",
     "type": "Villa",
@@ -123,7 +165,13 @@
     "surface": 200,
     "note": 4.9,
     "capacite": 10,
-    "equipements": ["wifi", "tv", "piscine", "jacuzzi", "service-menage"],
+    "equipements": [
+      "wifi",
+      "tv",
+      "piscine",
+      "jacuzzi",
+      "service-menage"
+    ],
     "location": {
       "city": "Saint-Tropez",
       "latitude": 43.2692,
@@ -131,7 +179,6 @@
       "altitude": 15
     }
   },
-  
   {
     "id": 7,
     "name": "Appartement Chic à Paris",
@@ -187,7 +234,7 @@
     "location": {
       "city": "Lyon",
       "latitude": 45.7578,
-      "longitude": 4.8320,
+      "longitude": 4.832,
       "altitude": 170
     }
   },
@@ -256,7 +303,7 @@
     ],
     "prix": 110,
     "description": "Loft spacieux au design industriel, parfait pour les voyageurs modernes et branchés.",
-    "type": "Loft",
+    "type": "Appartement",
     "chambres": 2,
     "salle_de_bain": 1,
     "cuisine": 1,
@@ -275,6 +322,7 @@
       "latitude": 50.6292,
       "longitude": 3.0573,
       "altitude": 18
-    }
+    },
+    "updatedAt": "2025-05-25T12:45:23.644Z"
   }
 ]
